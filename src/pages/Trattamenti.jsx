@@ -1,46 +1,53 @@
+import { useState, useEffect, useRef } from 'react';
 import TreatmentCard from '../components/TreatmentCard';
 
-// Dati dei trattamenti - facilmente aggiornabili
 const treatmentsData = {
   medicinaEstetica: [
-    { title: 'Filler', icon: 'filler.png', description: 'Trattamenti con acido ialuronico per ripristinare volumi e idratazione.' },
-    { title: 'Tossina Botulinica', icon: 'botox.png', description: 'Per la riduzione delle rughe di espressione e un aspetto più rilassato.' },
-    { title: 'Biorivitalizzazione', icon: 'biorivitalizzazione.png', description: 'Iniezioni di sostanze bio-stimolanti per migliorare elasticità e turgore.' },
+    { 
+      title: 'Filler con Acido Ialuronico', 
+      icon: 'filler.png', 
+      description: 'Trattamenti personalizzati per ripristinare volumi, idratazione e definire i contorni del viso in modo naturale e armonioso.',
+      category: 'medicina'
+    },
+    { 
+      title: 'Tossina Botulinica', 
+      icon: 'botox.png', 
+      description: 'Per la riduzione delle rughe di espressione e il rilassamento muscolare, ottenendo un aspetto naturale e riposato.',
+      category: 'medicina'
+    },
+    { 
+      title: 'Biorivitalizzazione', 
+      icon: 'biorivitalizzazione.png', 
+      description: 'Iniezioni di sostanze bio-stimolanti per migliorare elasticità, turgore e luminosità della pelle del viso.',
+      category: 'medicina'
+    },
   ],
   chirurgia: [
-    { title: 'Blefaroplastica', icon: 'blefaroplastica.png', description: 'Intervento per la correzione di palpebre superiori e inferiori.' },
-    { title: 'Liposuzione', icon: 'liposuzione.png', description: 'Rimodellamento della silhouette tramite aspirazione del grasso localizzato.' },
-    { title: 'Lipogems®', icon: 'lipogems.png', description: 'Tecnica rigenerativa che utilizza il proprio tessuto adiposo.' },
+    { 
+      title: 'Blefaroplastica', 
+      icon: 'blefaroplastica.png', 
+      description: 'Intervento di chirurgia estetica per la correzione di palpebre superiori e inferiori, per uno sguardo più giovane.',
+      category: 'chirurgia'
+    },
+    { 
+      title: 'Liposcultura', 
+      icon: 'liposuzione.png', 
+      description: 'Rimodellamento della silhouette tramite aspirazione selettiva del grasso localizzato e riposizionamento.',
+      category: 'chirurgia'
+    },
+    { 
+      title: 'Lipogems®', 
+      icon: 'lipogems.png', 
+      description: 'Tecnica rigenerativa innovativa che utilizza il proprio tessuto adiposo per stimolare la rigenerazione naturale.',
+      category: 'chirurgia'
+    },
   ]
 };
 
 export default function Trattamenti() {
-  return (
-    <div className="container mx-auto px-6 py-16 md:py-24">
-      <div className="text-center mb-12">
-        <h2 className="font-serif text-3xl md:text-4xl text-brand-blue font-bold">Trattamenti</h2>
-        <p className="text-lg text-gray-600 mt-2">Soluzioni personalizzate per viso e corpo.</p>
-      </div>
+  const [isVisible, setIsVisible] = useState(false}
+  const [activeCategory, setActiveCategory] = useState('all');
+  const sectionRef = useRef(null);
 
-      {/* Sezione Medicina Estetica */}
-      <div className="mb-16">
-        <h3 className="font-serif text-2xl text-text-dark font-semibold mb-8 border-b-2 border-brand-gold pb-2 inline-block">Medicina Estetica</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {treatmentsData.medicinaEstetica.map(trattamento => (
-            <TreatmentCard key={trattamento.title} {...trattamento} />
-          ))}
-        </div>
-      </div>
-
-      {/* Sezione Chirurgia */}
-      <div>
-        <h3 className="font-serif text-2xl text-text-dark font-semibold mb-8 border-b-2 border-brand-gold pb-2 inline-block">Chirurgia Rigenerativa</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {treatmentsData.chirurgia.map(trattamento => (
-            <TreatmentCard key={trattamento.title} {...trattamento} />
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
+  useEffect(() => {
+    const observer =
