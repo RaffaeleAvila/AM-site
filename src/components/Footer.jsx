@@ -1,7 +1,7 @@
 import logo from '../assets/images/logo-am.png';
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear(}
+  const currentYear = new Date().getFullYear();
 
   const quickLinks = [
     { name: 'La Dottoressa', href: '#la-dottoressa' },
@@ -92,3 +92,93 @@ export default function Footer() {
             <ul className="space-y-3">
               {treatments.map((treatment) => (
                 <li key={treatment.name}>
+                  <a 
+                    href={treatment.href} 
+                    className="text-sm opacity-80 hover:opacity-100 hover:text-brand-gold transition-all duration-300 flex items-center group"
+                  >
+                    <span className="w-0 group-hover:w-2 h-0.5 bg-brand-gold transition-all duration-300 mr-0 group-hover:mr-2"></span>
+                    {treatment.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact Info */}
+          <div>
+            <h4 className="font-serif text-lg font-semibold mb-6">Contatti</h4>
+            <div className="space-y-4">
+              <div className="flex items-start">
+                <svg className="w-5 h-5 text-brand-gold mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+                <div>
+                  <a 
+                    href="mailto:info@dottssamiegge.it" 
+                    className="text-sm opacity-90 hover:opacity-100 hover:text-brand-gold transition-colors duration-300"
+                  >
+                    info@dottssamiegge.it
+                  </a>
+                </div>
+              </div>
+              
+              <div className="flex items-start">
+                <svg className="w-5 h-5 text-brand-gold mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+                <div>
+                  <a 
+                    href="tel:+393401234567" 
+                    className="text-sm opacity-90 hover:opacity-100 hover:text-brand-gold transition-colors duration-300"
+                  >
+                    +39 340 123 4567
+                  </a>
+                </div>
+              </div>
+
+              {/* Clinics */}
+              <div className="mt-6">
+                <h5 className="text-sm font-semibold mb-3 text-brand-gold">Le Nostre Sedi:</h5>
+                <div className="space-y-2">
+                  {clinics.map((clinic) => (
+                    <div key={clinic.name} className="flex items-center text-xs opacity-80">
+                      <div className="w-1 h-1 bg-brand-gold rounded-full mr-2"></div>
+                      <span>{clinic.name} - {clinic.location}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="border-t border-white border-opacity-20 pt-8 flex flex-col md:flex-row justify-between items-center">
+          <div className="text-center md:text-left mb-4 md:mb-0">
+            <p className="text-sm opacity-80">
+              &copy; {currentYear} Dott.ssa Alice Miegge. Tutti i diritti riservati.
+            </p>
+            <p className="text-xs opacity-60 mt-1">
+              Medico Chirurgo | Medicina e Chirurgia Estetica | P.IVA 12345678901
+            </p>
+          </div>
+          
+          <div className="flex flex-wrap justify-center gap-4 text-xs opacity-60">
+            <a href="#" className="hover:opacity-100 transition-opacity duration-300">Privacy Policy</a>
+            <span>•</span>
+            <a href="#" className="hover:opacity-100 transition-opacity duration-300">Cookie Policy</a>
+            <span>•</span>
+            <a href="#" className="hover:opacity-100 transition-opacity duration-300">Disclaimer Medico</a>
+          </div>
+        </div>
+
+        {/* Developer Credit */}
+        <div className="text-center mt-8 pt-8 border-t border-white border-opacity-10">
+          <p className="text-xs opacity-50">
+            Sito web realizzato con ❤️ per la medicina estetica
+          </p>
+        </div>
+      </div>
+    </footer>
+  );
+}
